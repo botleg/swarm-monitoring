@@ -659,8 +659,8 @@
     ]
   },
   "time": {
-    "from": "2017-03-28T17:06:02.772Z",
-    "to": "2017-03-28T17:09:46.624Z"
+    "from": "now-1h",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -689,5 +689,5 @@
   },
   "timezone": "browser",
   "title": "cAdvisor",
-  "version": 12
+  "version": 3
 }
