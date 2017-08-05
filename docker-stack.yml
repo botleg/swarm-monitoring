@@ -13,6 +13,9 @@ services:
 
   grafana:
     image: grafana/grafana
+    environment:
+      - GF_SMTP_FROM_ADDRESS=example@example.com
+      - GF_SMTP_HOST=smtp.example.com:25
     ports:
       - 0.0.0.0:80:3000
     volumes:
@@ -38,6 +41,21 @@ services:
       - influx
     deploy:
       mode: global
+  
+  visual:
+    image: dockersamples/visualizer
+    ports:
+      - 0.0.0.0:81:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    deploy:
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == manager
 
 volumes:
   influx:
