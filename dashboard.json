@@ -36,9 +36,9 @@
   "gnetId": null,
   "graphTooltip": 0,
   "hideControls": false,
-  "id": null,
+  "id": 2,
   "links": [],
-  "refresh": false,
+  "refresh": "5s",
   "rows": [
     {
       "collapse": false,
@@ -47,27 +47,33 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_INFLUX}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influx",
           "fill": 1,
           "id": 1,
+          "interval": "",
           "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
             "show": true,
-            "total": false,
-            "values": false
+            "total": true,
+            "values": true
           },
           "lines": true,
           "linewidth": 1,
           "links": [],
-          "nullPointMode": "null",
+          "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -76,6 +82,12 @@
               "alias": "Memory {host: $tag_machine, container: $tag_container_name}",
               "dsType": "influxdb",
               "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
                 {
                   "params": [
                     "machine"
@@ -90,6 +102,7 @@
                 }
               ],
               "measurement": "memory_usage",
+              "orderByTime": "ASC",
               "policy": "default",
               "query": "SELECT \"value\" FROM \"memory_usage\" WHERE \"container_name\" =~ /^$container$/ AND \"machine\" =~ /^$host$/ AND $timeFilter",
               "rawQuery": false,
@@ -102,6 +115,10 @@
                       "value"
                     ],
                     "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
                   }
                 ]
               ],
@@ -131,6 +148,7 @@
           },
           "type": "graph",
           "xaxis": {
+            "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
@@ -158,27 +176,31 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_INFLUX}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influx",
           "fill": 1,
           "id": 2,
           "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
             "show": true,
-            "total": false,
-            "values": false
+            "total": true,
+            "values": true
           },
           "lines": true,
           "linewidth": 1,
           "links": [],
-          "nullPointMode": "null",
+          "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -187,6 +209,12 @@
               "alias": "CPU {host: $tag_machine, container: $tag_container_name}",
               "dsType": "influxdb",
               "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
                 {
                   "params": [
                     "machine"
@@ -201,6 +229,7 @@
                 }
               ],
               "measurement": "cpu_usage_total",
+              "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
               "resultFormat": "time_series",
@@ -211,6 +240,10 @@
                       "value"
                     ],
                     "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
                   },
                   {
                     "params": [
@@ -246,6 +279,7 @@
           },
           "type": "graph",
           "xaxis": {
+            "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
@@ -285,27 +319,31 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_INFLUX}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influx",
           "fill": 1,
           "id": 3,
           "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
             "show": true,
-            "total": false,
-            "values": false
+            "total": true,
+            "values": true
           },
           "lines": true,
           "linewidth": 1,
           "links": [],
-          "nullPointMode": "null",
+          "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -314,6 +352,12 @@
               "alias": "Usage {host: $tag_machine, container: $tag_container_name}",
               "dsType": "influxdb",
               "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
                 {
                   "params": [
                     "container_name"
@@ -328,6 +372,7 @@
                 }
               ],
               "measurement": "fs_usage",
+              "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
               "resultFormat": "time_series",
@@ -338,6 +383,10 @@
                       "value"
                     ],
                     "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
                   }
                 ]
               ],
@@ -361,6 +410,12 @@
               "groupBy": [
                 {
                   "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
                     "container_name"
                   ],
                   "type": "tag"
@@ -373,6 +428,7 @@
                 }
               ],
               "measurement": "fs_limit",
+              "orderByTime": "ASC",
               "policy": "default",
               "refId": "B",
               "resultFormat": "time_series",
@@ -383,6 +439,10 @@
                       "value"
                     ],
                     "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
                   }
                 ]
               ],
@@ -412,6 +472,7 @@
           },
           "type": "graph",
           "xaxis": {
+            "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
@@ -439,27 +500,31 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_INFLUX}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influx",
           "fill": 1,
           "id": 4,
           "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
             "show": true,
-            "total": false,
-            "values": false
+            "total": true,
+            "values": true
           },
           "lines": true,
           "linewidth": 1,
           "links": [],
-          "nullPointMode": "null",
+          "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -468,6 +533,12 @@
               "alias": "RX {host: $tag_machine, container: $tag_container_name}",
               "dsType": "influxdb",
               "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
                 {
                   "params": [
                     "container_name"
@@ -482,6 +553,7 @@
                 }
               ],
               "measurement": "rx_bytes",
+              "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
               "resultFormat": "time_series",
@@ -492,6 +564,10 @@
                       "value"
                     ],
                     "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
                   },
                   {
                     "params": [
@@ -521,6 +597,12 @@
               "groupBy": [
                 {
                   "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
                     "container_name"
                   ],
                   "type": "tag"
@@ -533,6 +615,7 @@
                 }
               ],
               "measurement": "tx_bytes",
+              "orderByTime": "ASC",
               "policy": "default",
               "refId": "B",
               "resultFormat": "time_series",
@@ -543,6 +626,10 @@
                       "value"
                     ],
                     "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
                   },
                   {
                     "params": [
@@ -578,6 +665,7 @@
           },
           "type": "graph",
           "xaxis": {
+            "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
@@ -618,8 +706,11 @@
     "list": [
       {
         "allValue": "",
-        "current": {},
-        "datasource": "${DS_INFLUX}",
+        "current": {
+          "text": "backbox.corde.org",
+          "value": "backbox.corde.org"
+        },
+        "datasource": "influx",
         "hide": 0,
         "includeAll": true,
         "label": "Host",
@@ -638,8 +729,11 @@
       },
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_INFLUX}",
+        "current": {
+          "text": "/",
+          "value": "/"
+        },
+        "datasource": "influx",
         "hide": 0,
         "includeAll": false,
         "label": "Container",
@@ -659,7 +753,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -688,6 +782,6 @@
     ]
   },
   "timezone": "browser",
-  "title": "cAdvisor",
-  "version": 3
+  "title": "cAdvisor Copy",
+  "version": 2
 }
