@@ -27,7 +27,7 @@ services:
 
   cadvisor:
     image: google/cadvisor
-    hostname: '{{.Node.ID}}'
+    hostname: '{{.Node.Hostname}}'
     command: -logtostderr -docker_only -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=influx:8086
     volumes:
       - /:/rootfs:ro
