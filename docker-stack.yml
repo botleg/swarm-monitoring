@@ -2,7 +2,7 @@ version: '3'
 
 services:
   influx:
-    image: influxdb
+    image: influxdb:1.8
     volumes:
       - influx:/var/lib/influxdb
     deploy:
