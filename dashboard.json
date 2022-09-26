@@ -2,7 +2,7 @@
   "__inputs": [
     {
       "name": "DS_INFLUX",
-      "label": "influx",
+      "label": "${DS_INFLUX}",
       "description": "",
       "type": "datasource",
       "pluginId": "influxdb",
@@ -49,7 +49,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "influx",
+          "datasource": "${DS_INFLUX}",
           "fill": 1,
           "id": 1,
           "interval": "",
@@ -178,7 +178,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "influx",
+          "datasource": "${DS_INFLUX}",
           "fill": 1,
           "id": 2,
           "legend": {
@@ -321,7 +321,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "influx",
+          "datasource": "${DS_INFLUX}",
           "fill": 1,
           "id": 3,
           "legend": {
@@ -502,7 +502,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "influx",
+          "datasource": "${DS_INFLUX}",
           "fill": 1,
           "id": 4,
           "legend": {
@@ -710,7 +710,7 @@
           "text": "backbox.corde.org",
           "value": "backbox.corde.org"
         },
-        "datasource": "influx",
+        "datasource": "${DS_INFLUX}",
         "hide": 0,
         "includeAll": true,
         "label": "Host",
@@ -733,7 +733,7 @@
           "text": "/",
           "value": "/"
         },
-        "datasource": "influx",
+        "datasource": "${DS_INFLUX}",
         "hide": 0,
         "includeAll": false,
         "label": "Container",
